@@ -308,8 +308,11 @@ export function ContractorSearch() {
 
   return (
     <div
-      className="w-[320px] p-[18px]"
+      className="w-[320px] rounded-[14px] border p-[18px]"
       style={{
+        backgroundColor: '#ffffff',
+        borderColor: '#ececed',
+        boxShadow: '0 8px 24px -6px rgba(27, 20, 97, 0.08)',
       }}
     >
       <p

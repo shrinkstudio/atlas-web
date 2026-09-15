@@ -144,7 +144,7 @@ export function TownNoticesBoard() {
   return (
     <section
       aria-label="Town notices"
-      className="flex w-80 flex-col gap-[14px] p-[18px]"
+      className="flex w-80 flex-col gap-[14px] rounded-[14px] border border-[#ececed] bg-white p-[18px] shadow-[0_8px_24px_-6px_rgba(27,20,97,0.08)]"
     >
       <h2 className="font-mono text-[10.5px] font-medium uppercase leading-[13px] tracking-[0.315px] text-[#7059ff]">
         Town Notices

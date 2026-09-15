@@ -198,11 +198,13 @@ export function NeighborlyPosts() {
 
   return (
     <div
-      className="flex flex-col"
+      className="flex flex-col rounded-[14px] border bg-white"
       style={{
         width: 320,
         padding: 18,
         gap: 14,
+        borderColor: "#ececed",
+        boxShadow: "0 8px 24px -6px rgba(27, 20, 97, 0.08)",
       }}
       role="group"
       aria-label="Neighborly posts on Summit Ave"

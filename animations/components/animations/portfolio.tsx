@@ -132,8 +132,10 @@ export function JobsMapCard() {
 
   return (
     <div
-      className="relative flex w-[320px] flex-col gap-3.5 p-[18px]"
+      className="relative flex w-[320px] flex-col gap-3.5 rounded-[14px] border bg-white p-[18px]"
       style={{
+        borderColor: "#ececed",
+        boxShadow: "0 8px 24px -6px rgba(27, 20, 97, 0.08)",
       }}
     >
       <span
