@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { animations } from "@/components/registry";
+import Fit from "@/components/fit";
 
 export function generateStaticParams() {
   return Object.keys(animations)
@@ -15,5 +16,11 @@ export default async function Page({
   const { slug } = await params;
   const Animation = animations[slug];
   if (!Animation) notFound();
-  return <Animation />;
+  // The orbit hero scales itself; every card animation gets fitted.
+  if (slug === "home") return <Animation />;
+  return (
+    <Fit>
+      <Animation />
+    </Fit>
+  );
 }
