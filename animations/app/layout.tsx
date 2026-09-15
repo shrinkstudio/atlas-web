@@ -1,5 +1,18 @@
 import type { ReactNode } from "react";
+import { DM_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-dm-sans",
+});
+
+const dmMono = DM_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-dm-mono",
+});
 
 export const metadata = {
   title: "Ruxlo animations",
@@ -9,15 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&family=DM+Mono:wght@500&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>
+      <body className={`${dmSans.variable} ${dmMono.variable} antialiased`}>
         <main className="stage">{children}</main>
       </body>
     </html>
