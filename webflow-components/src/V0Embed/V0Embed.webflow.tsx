@@ -14,5 +14,7 @@ export default declareComponent(V0Embed, {
     maxWidth: props.Text({ name: 'Max width', defaultValue: '620px' }),
     mountMargin: props.Text({ name: 'Mount margin', defaultValue: '600px' }),
     posterUrl: props.Text({ name: 'Poster image URL', defaultValue: '' }),
+    entrance: props.Boolean({ name: 'Entrance (hero cadence)', defaultValue: false }),
+    entranceDelay: props.Number({ name: 'Entrance delay (ms)', defaultValue: 450 }),
   },
 });

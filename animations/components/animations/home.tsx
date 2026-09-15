@@ -71,6 +71,26 @@ export default function OrbitHero() {
   const reduce = useReducedMotion()
   const wrapperRef = useRef<HTMLDivElement>(null)
   const [scale, setScale] = useState(1)
+  const [play, setPlay] = useState(false)
+
+  // When embedded, the parent shell reveals the iframe in the page-load
+  // cadence and posts "ruxlo:play" so the entrance ripple runs on-screen.
+  // The timeout covers standalone visits (and a missed message).
+  useEffect(() => {
+    if (reduce) {
+      setPlay(true)
+      return
+    }
+    const onMsg = (e: MessageEvent) => {
+      if (e.data && e.data.type === "ruxlo:play") setPlay(true)
+    }
+    window.addEventListener("message", onMsg)
+    const t = window.setTimeout(() => setPlay(true), 1800)
+    return () => {
+      window.removeEventListener("message", onMsg)
+      window.clearTimeout(t)
+    }
+  }, [reduce])
 
   useEffect(() => {
     const el = wrapperRef.current
@@ -98,6 +118,7 @@ export default function OrbitHero() {
       className="relative mx-auto w-full max-w-[765px]"
       style={{ aspectRatio: `${STAGE_W} / ${STAGE_H}` }}
     >
+      {play && (
       <div
         className="absolute left-0 top-0"
         style={{
@@ -260,6 +281,7 @@ export default function OrbitHero() {
           </motion.div>
         ))}
       </div>
+      )}
     </div>
   )
 }
