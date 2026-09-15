@@ -19,7 +19,7 @@ export default async function Page({
   // The orbit hero scales itself; every card animation gets fitted.
   if (slug === "home") return <Animation />;
   return (
-    <Fit>
+    <Fit slug={slug}>
       <Animation />
     </Fit>
   );

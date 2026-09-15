@@ -147,8 +147,10 @@ export function WorkHistoryCard() {
 
       <div className="mt-3.5 h-px w-full bg-[#f2f2f4]" />
 
-      {/* Fixed min-height keeps the header from shifting as rows enter/exit. */}
-      <ul className="mt-3.5 flex min-h-[150px] flex-col gap-3.5">
+      {/* Fixed height + clip: entering/exiting rows overlap in the flow and
+          would grow the card ~90px mid-transition; they swap inside this
+          window instead so the card never changes size. */}
+      <ul className="mt-3.5 flex h-[150px] flex-col gap-3.5 overflow-hidden">
         <AnimatePresence mode="popLayout">
           {rows.map((entry) => (
             <Row key={entry.id} entry={entry} animate={!reduceMotion} />
