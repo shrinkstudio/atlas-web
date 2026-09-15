@@ -106,8 +106,7 @@ export function LeadsFeed() {
 
   return (
     <div
-      className="flex w-80 flex-col gap-[14px] rounded-[14px] border border-[#ececed] bg-white p-[18px]"
-      style={{ boxShadow: "0 8px 24px -6px rgba(27, 20, 97, 0.08)" }}
+      className="flex w-80 flex-col gap-[14px] p-[18px]"
       aria-label="Live lead feed"
     >
       <span className="font-mono text-[10.5px] font-medium tracking-[0.315px] text-[#7059ff]">

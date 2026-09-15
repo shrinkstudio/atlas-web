@@ -130,7 +130,7 @@ export function WorkHistoryCard() {
   }, [reduceMotion])
 
   return (
-    <div className="w-80 rounded-[14px] border border-[#ececed] bg-white p-[18px] shadow-[0_8px_24px_-6px_rgba(27,20,97,0.08)]">
+    <div className="w-80 p-[18px]">
       <p className="font-[family-name:var(--font-dm-mono)] text-[10.5px] font-medium uppercase tracking-[0.315px] text-[#7059ff]">
         Work History
       </p>

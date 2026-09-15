@@ -149,7 +149,7 @@ export function DocumentsCard() {
   }, [reduceMotion])
 
   return (
-    <div className="flex w-80 flex-col gap-3.5 rounded-[14px] border border-[#ececed] bg-white p-[18px] shadow-[0_8px_24px_-6px_rgba(27,20,97,0.08)]">
+    <div className="flex w-80 flex-col gap-3.5 p-[18px]">
       <p className="font-[family-name:var(--font-dm-mono)] text-[10.5px] font-medium uppercase leading-none tracking-[0.315px] text-[#7059ff]">
         Documents
       </p>

@@ -189,11 +189,8 @@ export function ClaimYourWork() {
 
   return (
     <div
-      className="w-80 rounded-[14px] p-[18px]"
+      className="w-80 p-[18px]"
       style={{
-        backgroundColor: "#ffffff",
-        border: "1px solid #ececed",
-        boxShadow: "0 8px 24px -6px rgba(27, 20, 97, 0.08)",
       }}
       role="img"
       aria-label="Claim your work. A pending job is claimed and confirmed by the owner, then filed into your record."
