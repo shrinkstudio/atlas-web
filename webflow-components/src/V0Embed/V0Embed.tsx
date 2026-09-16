@@ -57,9 +57,31 @@ export const V0Embed = ({
     return () => list.removeEventListener('change', update);
   }, []);
 
+  // Get the connection warm before the iframe src is even set.
+  useEffect(() => {
+    if (!sourceUrl || typeof document === 'undefined') return;
+    try {
+      const origin = new URL(sourceUrl, window.location.href).origin;
+      if (document.querySelector(`link[rel="preconnect"][href="${origin}"]`)) return;
+      const link = document.createElement('link');
+      link.rel = 'preconnect';
+      link.href = origin;
+      link.crossOrigin = '';
+      document.head.appendChild(link);
+    } catch {
+      /* invalid URL: nothing to warm */
+    }
+  }, [sourceUrl]);
+
   useEffect(() => {
     const el = containerRef.current;
     if (!el || reducedMotion || !sourceUrl) return;
+    // The hero is above the fold by definition — mount instantly instead of
+    // waiting an observer tick, so the iframe starts loading at hydration.
+    if (entrance) {
+      setMounted(true);
+      return;
+    }
     if (typeof IntersectionObserver === 'undefined') {
       setMounted(true);
       return;
@@ -70,7 +92,7 @@ export const V0Embed = ({
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [reducedMotion, sourceUrl, mountMargin]);
+  }, [reducedMotion, sourceUrl, mountMargin, entrance]);
 
   useEffect(() => {
     if (!entrance) return;
@@ -132,7 +154,7 @@ export const V0Embed = ({
           ref={iframeRef}
           src={sourceUrl}
           title={title}
-          loading="lazy"
+          loading={entrance ? 'eager' : 'lazy'}
           onLoad={() => setLoaded(true)}
           style={{
             position: 'absolute',
