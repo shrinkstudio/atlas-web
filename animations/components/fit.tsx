@@ -27,6 +27,11 @@ const SIZES: Record<string, [number, number]> = {
   "fragmented-tools": [380, 434],
   "property-profile": [409, 294],
   "who-its-for": [877, 391],
+  "claim-home": [340, 213],
+  "record-work": [340, 297],
+  "confirm-work": [330, 170],
+  "record-stays": [340, 222],
+  "hiw-hero": [730, 405],
 }
 
 export default function Fit({

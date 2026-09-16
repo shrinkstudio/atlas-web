@@ -16,6 +16,11 @@ import VerifiedNeighbors from "./animations/verified-neighbors";
 import FragmentedTools from "./animations/fragmented-tools";
 import PropertyProfile from "./animations/property-profile";
 import WhoItsFor from "./animations/who-its-for";
+import ClaimHome from "./animations/claim-home";
+import RecordWork from "./animations/record-work";
+import ConfirmWork from "./animations/confirm-work";
+import RecordStays from "./animations/record-stays";
+import HiwHero from "./animations/hiw-hero";
 
 // slug -> component. The slug is the URL path; "home" is served at "/".
 // Embed URL for a card = https://<domain>/<slug>
@@ -36,4 +41,9 @@ export const animations: Record<string, ComponentType> = {
   "fragmented-tools": FragmentedTools,
   "property-profile": PropertyProfile,
   "who-its-for": WhoItsFor,
+  "claim-home": ClaimHome,
+  "record-work": RecordWork,
+  "confirm-work": ConfirmWork,
+  "record-stays": RecordStays,
+  "hiw-hero": HiwHero,
 };
