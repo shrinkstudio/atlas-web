@@ -15,6 +15,7 @@ import TownNotices from "./animations/town-notices";
 import VerifiedNeighbors from "./animations/verified-neighbors";
 import FragmentedTools from "./animations/fragmented-tools";
 import PropertyProfile from "./animations/property-profile";
+import WhoItsFor from "./animations/who-its-for";
 
 // slug -> component. The slug is the URL path; "home" is served at "/".
 // Embed URL for a card = https://<domain>/<slug>
@@ -34,4 +35,5 @@ export const animations: Record<string, ComponentType> = {
   "verified-neighbors": VerifiedNeighbors,
   "fragmented-tools": FragmentedTools,
   "property-profile": PropertyProfile,
+  "who-its-for": WhoItsFor,
 };

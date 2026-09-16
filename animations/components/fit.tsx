@@ -26,6 +26,7 @@ const SIZES: Record<string, [number, number]> = {
   "verified-neighbors": [320, 252],
   "fragmented-tools": [380, 434],
   "property-profile": [409, 294],
+  "who-its-for": [877, 391],
 }
 
 export default function Fit({
