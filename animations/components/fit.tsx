@@ -12,7 +12,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react"
  */
 const PAD = 16
 const SIZES: Record<string, [number, number]> = {
-  "work-history": [320, 267],
+  "work-history": [877, 391],
   "documents": [320, 221],
   "neighborhood-network": [320, 222],
   "find-contractor": [320, 193],
