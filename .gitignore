@@ -1,31 +1,10 @@
-# Logs
-logs
-*.log
-npm-debug.log*
+# v0 runtime files
+__v0_runtime_loader.js
+__v0_devtools.tsx
+__v0_jsx-dev-runtime.ts
 
-# Dependency directories
-node_modules/
-
-# TypeScript v1 declaration files
-typings/
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
-# Optional REPL history
-.node_repl_history
-
-# Output of 'npm pack'
-*.tgz
-
-# dotenv environment variables file
-.env
-
-# Production files
-dist
-
-# Next.js build output (animations app)
+# Common ignores
+node_modules
 .next/
+.env*.local
+.DS_Store
