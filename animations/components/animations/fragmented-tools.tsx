@@ -13,8 +13,8 @@ import {
   type LucideIcon,
 } from "lucide-react"
 
-const STAGE_W = 558
-const STAGE_H = 520
+const STAGE_W = 380
+const STAGE_H = 434
 
 type Chip = {
   label: string
@@ -31,14 +31,14 @@ type Chip = {
 
 // Order top-to-bottom = pop-in order.
 const CHIPS: Chip[] = [
-  { label: "Email", Icon: Mail, color: "#5B48D8", x: 252, y: 123, rotate: 3, driftDuration: 6.3, driftDelay: 0 },
-  { label: "Sticky notes", Icon: StickyNote, color: "#EA8A3E", x: 114, y: 163, rotate: -5, driftDuration: 8.1, driftDelay: 1.2 },
-  { label: "Spreadsheets", Icon: Table, color: "#16A34A", x: 294, y: 182, rotate: -2, driftDuration: 5.5, driftDelay: 2.4 },
-  { label: "Phone calls", Icon: Phone, color: "#2563EB", x: 319, y: 252, rotate: -4, driftDuration: 9.5, driftDelay: 0.6 },
-  { label: "Paper files", Icon: FileText, color: "#EA8A3E", x: 131, y: 259, rotate: 5, driftDuration: 7.2, driftDelay: 3.1 },
-  { label: "Text messages", Icon: MessageSquare, color: "#16A34A", x: 253, y: 333, rotate: 2, driftDuration: 6.8, driftDelay: 1.8 },
-  { label: "Different apps", Icon: LayoutGrid, color: "#2563EB", x: 154, y: 397, rotate: -3, driftDuration: 8.7, driftDelay: 0.9 },
-  { label: "Old portals", Icon: AppWindow, color: "#5B48D8", x: 287, y: 469, rotate: 4, driftDuration: 5.9, driftDelay: 2.7 },
+  { label: "Email", Icon: Mail, color: "#5B48D8", x: 158, y: 20, rotate: 3, driftDuration: 6.3, driftDelay: 0 },
+  { label: "Sticky notes", Icon: StickyNote, color: "#EA8A3E", x: 20, y: 60, rotate: -5, driftDuration: 8.1, driftDelay: 1.2 },
+  { label: "Spreadsheets", Icon: Table, color: "#16A34A", x: 200, y: 79, rotate: -2, driftDuration: 5.5, driftDelay: 2.4 },
+  { label: "Phone calls", Icon: Phone, color: "#2563EB", x: 225, y: 149, rotate: -4, driftDuration: 9.5, driftDelay: 0.6 },
+  { label: "Paper files", Icon: FileText, color: "#EA8A3E", x: 37, y: 156, rotate: 5, driftDuration: 7.2, driftDelay: 3.1 },
+  { label: "Text messages", Icon: MessageSquare, color: "#16A34A", x: 159, y: 230, rotate: 2, driftDuration: 6.8, driftDelay: 1.8 },
+  { label: "Different apps", Icon: LayoutGrid, color: "#2563EB", x: 60, y: 294, rotate: -3, driftDuration: 8.7, driftDelay: 0.9 },
+  { label: "Old portals", Icon: AppWindow, color: "#5B48D8", x: 193, y: 366, rotate: 4, driftDuration: 5.9, driftDelay: 2.7 },
 ]
 
 const POP_FIRST_DELAY = 0.35

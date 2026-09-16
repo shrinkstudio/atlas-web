@@ -24,7 +24,8 @@ const SIZES: Record<string, [number, number]> = {
   "block-events": [320, 171],
   "town-notices": [320, 201],
   "verified-neighbors": [320, 252],
-  "fragmented-tools": [558, 520],
+  "fragmented-tools": [380, 434],
+  "property-profile": [409, 294],
 }
 
 export default function Fit({
