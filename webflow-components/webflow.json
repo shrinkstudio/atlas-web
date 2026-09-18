@@ -4,7 +4,7 @@
     "components": [
       "./src/**/*.webflow.@(ts|tsx|js|jsx)"
     ],
-    "description": "Code components for the Ruxlo site (V0 Embed and future tools).",
+    "description": "The Ruxlo site's animated cards and heroes as native code components.",
     "id": "ruxlo-tools"
   }
 }

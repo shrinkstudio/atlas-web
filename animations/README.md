@@ -1,6 +1,12 @@
-# Ruxlo animations
+# Ruxlo animations (superseded — local preview only)
 
-One small Next.js app that hosts every embedded UI animation for the Ruxlo site, a route per card. Deployed once to Vercel, so each animation has a stable URL like `https://<domain>/work-history`. These URLs go into the **V0 Embed** component's Source URL prop in Webflow.
+> **This app is no longer how the animations ship.** They are now published as
+> native Webflow Code Components from [`../webflow-components`](../webflow-components),
+> which has its own copy of every animation in `src/animations/` — **edit them
+> there**, not here. No Vercel deployment is needed anymore. This app remains
+> only as a quick local preview harness (`npm run dev`, then visit `/<slug>`).
+
+One small Next.js app that hosts every embedded UI animation for the Ruxlo site, a route per card. It was deployed once to Vercel, so each animation had a stable URL like `https://<domain>/work-history`; those URLs went into the (now removed) **V0 Embed** component's Source URL prop in Webflow.
 
 Lives inside the `atlas-web` repo but is fully self-contained (its own `package.json`); it does not touch the site bundle in `../src` or `../webflow-components`.
 

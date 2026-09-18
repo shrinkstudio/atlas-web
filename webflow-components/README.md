@@ -1,62 +1,84 @@
-# Webflow Code Components
+# Ruxlo Webflow Code Components
 
-React components published into the Ruxlo Webflow workspace as a Code Component library via DevLink. Self-contained sub-package; does not touch the site bundle in `../src`.
+Every animated card and hero for the Ruxlo site, packaged as native **Webflow Code Components**. Publish once and all 21 animations appear in the Webflow Designer's Components panel (under **Ruxlo**) — drag one onto a page and it plays. There is no external hosting: no Vercel, no iframes, no URLs to paste. Webflow hosts everything with the site.
 
-First component: **V0 Embed** — a lazy-mounting iframe shell for the animated feature cards built in v0 and deployed to Vercel. The client drops the component on a page and pastes the animation's deploy URL into the **Source URL** prop. No rebuild per animation.
+This folder is self-contained and is the piece to hand to the client (with this README). Day to day, **nothing here needs to run** — the site keeps working without it. It is only needed to *change* an animation or publish updates.
 
-## Requirements
-- Node.js ≥ 22.13 · npm (this package is npm-only, separate from the pnpm site build in `../`).
-- A Webflow **workspace with DevLink / Code Components access** (the Shrink workspace has it).
-- Logged in via `webflow auth login` (interactive). **Do not set `WEBFLOW_API_TOKEN`** for DevLink, see Publishing below.
+## One-time setup
 
-## Scripts
-```bash
-npm install
-npm run check     # tsc type-check
-npm run bundle    # local library bundle (needs library.id in webflow.json, set on first import)
-npm run import    # publish the library to the Webflow workspace (see below)
-```
+1. Install [Node.js](https://nodejs.org) (version 22 or newer).
+2. Open a terminal in this folder and run:
+   ```bash
+   npm install
+   npx webflow auth login
+   ```
+   The login opens a browser window — sign in with the Webflow account that owns the workspace. The workspace needs Code Components (DevLink) access.
 
-## Publishing (DevLink import)
+> **Important gotcha:** publishing uses that browser login, **not** an API token. If a `WEBFLOW_API_TOKEN` environment variable exists, the CLI will try to use it and fail with *"Your API token is invalid or not authorized"*. Run `unset WEBFLOW_API_TOKEN` first if you ever see that error.
 
-> **Gotcha (this cost an hour once):** DevLink authenticates with your **interactive login session, not an API token.** Do NOT set `WEBFLOW_API_TOKEN` and do NOT keep a `.env` with it. A Data API token has no Code Components scope, so if the CLI finds one in the environment it uses it and fails with *"Your API token is invalid or not authorized to perform this action"* — even when the token is otherwise valid. Keep the env var unset so the CLI falls back to your login session.
+## Publishing to Webflow
 
 ```bash
-# one-time (or when the session expires): interactive browser login
-npx webflow auth login --force
-
-# then, in a shell with WEBFLOW_API_TOKEN unset:
-unset WEBFLOW_API_TOKEN   # clears any stale export in the current shell
 npm run import
 ```
 
-First import links the library to the workspace, prompts for the workspace if needed (pick the one with Code Components access), and writes `library.id` back into `webflow.json`.
+That's the whole deploy. It compiles the styles, bundles the components, and pushes the **Ruxlo Tools** library into the Webflow workspace. Open the Designer afterwards and the components are in the Components panel under **Ruxlo** (a Designer refresh may be needed).
 
-Target site: **Ruxlo AI** (`6a671e8dae27f770cdae0220`), in the Shrink workspace (`63765059a2b39056142ead15`). After a successful import, **V0 Embed** appears in the Designer Components panel under the **Ruxlo** group.
+The first import into a new workspace will ask which workspace to link and writes the library id into `webflow.json`. If this library moves to a different workspace (e.g. at handoff), delete the `"id"` line inside `webflow.json` and run `npm run import` again to link it fresh.
 
-## Using V0 Embed
-1. Build an animation in v0 (one chat per card, under the `ruxlo` project), deploy it to Vercel.
-2. Drop a **V0 Embed** instance on the page and set its props:
-   - **Source URL** — the Vercel deploy URL for that animation (required).
-   - **Title (accessibility)** — short label for the iframe, eg. "Work history animation".
-   - **Aspect ratio** — matches the card, eg. `16/10` or `4/3`.
-   - **Max width** — caps the embed width, eg. `620px`.
-   - **Mount margin** — how far before the viewport the iframe boots (`600px` default).
-   - **Poster image URL** — a static screenshot; shown before the iframe mounts and under reduced motion.
-3. The iframe only runs while near the viewport, so several embeds on one page cost nothing off-screen.
+## Changing an animation
 
-Deploy the v0 animations under the **client's Vercel** (or transfer the projects at handoff) so the Source URLs are not tied to Shrink's account.
+Each animation is one file in `src/animations/` — for example `src/animations/work-history.tsx`. To change text, colors, or timing:
 
-## Layout
+1. Edit the file (the copy inside the animation, e.g. `"Roof leak repair"`, is plain text in the code).
+2. Run `npm run check` — this catches typos in the code before publishing.
+3. Run `npm run import` to publish.
+4. Refresh the Designer and re-publish the Webflow site.
+
+Nothing else updates automatically or expires; if no one touches the code, the site keeps running the last published version forever.
+
+## The components
+
+| Designer name | Source file | Natural size |
+| --- | --- | --- |
+| Hero: Orbit Rings | `src/animations/home.tsx` | self-sizing (765 wide) |
+| Hero: Who It's For | `src/animations/who-its-for.tsx` | 877 × 391 |
+| Hero: How It Works | `src/animations/hiw-hero.tsx` | 730 × 405 |
+| Work History | `src/animations/work-history.tsx` | 320 × 267 |
+| Documents | `src/animations/documents.tsx` | 320 × 221 |
+| Neighborhood Network | `src/animations/neighborhood-network.tsx` | 320 × 222 |
+| Find Contractor | `src/animations/find-contractor.tsx` | 320 × 193 |
+| Claim Your Work | `src/animations/claim-work.tsx` | 320 × 204 |
+| Portfolio | `src/animations/portfolio.tsx` | 320 × 221 |
+| Get Found | `src/animations/get-found.tsx` | 320 × 188 |
+| Get Leads | `src/animations/leads.tsx` | 320 × 308 |
+| Your Street | `src/animations/your-street.tsx` | 320 × 201 |
+| Block Events | `src/animations/block-events.tsx` | 320 × 171 |
+| Town Notices | `src/animations/town-notices.tsx` | 320 × 201 |
+| Verified Neighbors | `src/animations/verified-neighbors.tsx` | 320 × 252 |
+| Fragmented Tools | `src/animations/fragmented-tools.tsx` | 380 × 434 |
+| Property Profile | `src/animations/property-profile.tsx` | 409 × 294 |
+| Claim Your Home | `src/animations/claim-home.tsx` | 340 × 213 |
+| Record Work | `src/animations/record-work.tsx` | 340 × 297 |
+| Confirm Work | `src/animations/confirm-work.tsx` | 330 × 170 |
+| Record Stays | `src/animations/record-stays.tsx` | 340 × 222 |
+
+Using them in the Designer: drop a component in and give it a width (a card fills whatever box it gets, scales down to fit, and never scales up past its natural size — upscaling would blur the text). The three heroes have two settings in the panel: **Entrance** (reveal in the page-load cadence, on by default) and **Entrance delay** in milliseconds.
+
+## How it works (for the curious)
+
+- `src/animations/` — the animation components themselves (React + framer-motion, originally built in v0). Each draws its own card; the stage around it is transparent, so any Webflow section background shows through.
+- `src/webflow/*.webflow.tsx` — one small wrapper per animation that registers it with the Designer (name, group, settings).
+- `src/shared/AnimationCard.tsx` — the shell around every animation: injects the stylesheet into the component's shadow root, loads the DM Sans/DM Mono fonts from Google Fonts, only runs an animation while it is near the viewport (so a page full of them costs nothing off-screen), and handles the fit-scaling and hero entrance.
+- `src/shared/theme.css` + `npm run css` — compiles the Tailwind classes the animations use into `src/shared/generated/tailwind-css.ts`. This runs automatically before every import/bundle, so it's only a separate step if you want to inspect the output.
+- `src/shared/figma-assets.ts` — the few small icons, inlined as data URIs so no asset hosting is needed.
+- Every animation respects the visitor's "reduce motion" system setting and shows a calm static state instead.
+
+## Scripts
+
+```bash
+npm run check    # type-check (run before publishing)
+npm run bundle   # build the library locally without publishing (sanity check)
+npm run import   # publish the library to the Webflow workspace
+npm run css      # rebuild the compiled stylesheet (import/bundle do this automatically)
 ```
-webflow-components/
-├── webflow.json                 # library manifest (id added on first import)
-├── package.json · tsconfig.json
-└── src/V0Embed/
-    ├── V0Embed.tsx              # lazy-mount iframe shell (viewport gating + reduced-motion poster)
-    └── V0Embed.webflow.tsx      # declareComponent + Designer props
-```
-
-## Notes
-- **Shadow DOM:** Code Components render in a shadow root, so anything visual ships inside the component. V0 Embed is just an iframe, so there is nothing to style here; the animation lives in the embedded v0 page.
-- **No heavy deps:** the animation code (framer-motion etc.) lives in the v0 deploys, not in this package. This shell stays react-only.

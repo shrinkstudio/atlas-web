@@ -1,0 +1,18 @@
+/* Source stylesheet for the animations. `npm run css` compiles this (plus
+   every Tailwind class used in src/animations) into generated/tailwind-css.ts,
+   which each component ships inside its shadow root. */
+@import "tailwindcss";
+@source "../animations";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
+}
+
+/* A few animations use these variables in inline styles (kept from the old
+   Next.js app, where next/font defined them). */
+:root,
+:host {
+  --font-dm-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-dm-mono: "DM Mono", ui-monospace, monospace;
+}
